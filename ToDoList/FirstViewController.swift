@@ -8,21 +8,32 @@
 
 import UIKit
 
-    var tableData = [DataModel]()
-
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tablenya: UITableView!
 
-    var chosen = 0
+    var tableData = [DataModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tablenya.reloadData()
+
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let secondViewController = tabBarController?.viewControllers?[1] as? SecondViewController
+        secondViewController?.delegate = self
+        
+        tablenya.reloadData()
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        
+        if tableData.count<1 {
+        tablenya.isHidden = true
+        }
+        else {
+        tablenya.isHidden = false
         tablenya.reloadData()
+        }
     }
     
     
@@ -49,15 +60,33 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let chosen = sender as! DataModel
         let next = segue.destination as! DetailsViewController
-        next.temp = chosen
+        next.tanggalKirim = chosen.date
+        next.namaKirim = chosen.name
+       
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        chosen = indexPath.row
-        performSegue(withIdentifier: "detailsSegue", sender: nil)
+        let chosen = tableData[indexPath.row] as DataModel
+        performSegue(withIdentifier: "detailsSegue", sender: chosen)
     }
     
+    func updateData (todoe: DataModel){
+        tableData.append(todoe)
+        tablenya.reloadData()
+    }
+
 }
+
+extension FirstViewController: SecondViewControllerDelegate {
+    func firstViewController(controller: SecondViewController, didUpdateTodoes todoes: DataModel) {
+        print("kkkk")
+        updateData(todoe: todoes)
+    }
+}
+
+
 
 

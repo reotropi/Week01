@@ -9,8 +9,9 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
-    var temp = 0
+    
+    var tanggalKirim = ""
+    var namaKirim = ""
     
     @IBOutlet weak var tanggalDetails: UILabel!
     
@@ -19,20 +20,14 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tanggalDetails.text = tableData[temp].date
-        namaDetails.text = tableData[temp].name
+      tanggalDetails.text = tanggalKirim
+      namaDetails.text = namaKirim
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-
-    
-    @IBAction func backButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
 
     /*

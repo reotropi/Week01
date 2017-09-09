@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ToDos-->
+        <!--First View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -56,7 +56,6 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="qsq-26-wWM" id="SPT-AI-82P"/>
                                             <outlet property="nameLabel" destination="9Bm-rT-ydu" id="3FA-4l-43d"/>
-                                            <segue destination="Kdz-pP-ACt" kind="showDetail" identifier="detailsSegue" id="6Sh-y8-Qzx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -68,14 +67,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ToDos" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" id="nOY-lR-R8Y"/>
                     <connections>
                         <outlet property="tablenya" destination="NM6-EL-grd" id="vur-YZ-I2T"/>
+                        <segue destination="Kdz-pP-ACt" kind="show" identifier="detailsSegue" id="bHb-Ls-NaI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-348"/>
+            <point key="canvasLocation" x="1688.8" y="-348.57571214392806"/>
         </scene>
         <!--ToDos-->
         <scene sceneID="kvx-5E-zxY">
@@ -107,14 +107,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXy-bX-a0M">
-                                <rect key="frame" x="32" y="28" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="backButtonPressed:" destination="Kdz-pP-ACt" eventType="touchUpInside" id="Omi-nw-aae"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -126,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHw-0m-hke" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1564" y="-348"/>
+            <point key="canvasLocation" x="2503.1999999999998" y="-348.57571214392806"/>
         </scene>
         <!--Input Items-->
         <scene sceneID="wg7-f3-ORb">
@@ -155,6 +147,13 @@
                                     <action selector="saveButtonTapped:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="kay-5e-cOM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Input To Do List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7g0-aa-ziS">
+                                <rect key="frame" x="73" y="229" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -165,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
+            <point key="canvasLocation" x="750" y="360"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -178,13 +177,32 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="a8v-Vv-QpO" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--ToDos-->
+        <scene sceneID="ZG4-Fj-aMN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a8v-Vv-QpO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="ToDos" image="first" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ME-A0-vfB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="k7q-1F-iE2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t61-F0-Emk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.60000000000002" y="-348.57571214392806"/>
         </scene>
     </scenes>
     <resources>

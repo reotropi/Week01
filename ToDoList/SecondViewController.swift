@@ -12,6 +12,8 @@ class SecondViewController: UIViewController {
     
     @IBOutlet weak var theTextField: UITextField!
 
+    var delegate: SecondViewControllerDelegate?
+    
     var dataTemp = DataModel()
     
     override func viewDidLoad() {
@@ -29,7 +31,8 @@ class SecondViewController: UIViewController {
         
         if name != nil {
             dataTemp = DataModel(date: getDate, name: name!)
-            tableData.append(dataTemp)
+            self.delegate?.firstViewController(controller: self, didUpdateTodoes: dataTemp)
+           //tableData.append(dataTemp)
         }
     }
     
@@ -44,3 +47,6 @@ class SecondViewController: UIViewController {
     
 }
 
+protocol SecondViewControllerDelegate {
+    func firstViewController( controller: SecondViewController, didUpdateTodoes todoes: DataModel)
+}
