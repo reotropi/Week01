@@ -8,7 +8,9 @@
 
 import Foundation
 
-class DataModel {
+
+/* W1 & 2
+ class DataModel {
     private var _date: String?
     private var _name: String?
     
@@ -27,4 +29,14 @@ class DataModel {
         return _name!
     }
     
+}*/
+
+
+// W3
+import RealmSwift
+
+class DataModel: Object {
+    dynamic var date = ""
+    dynamic var name = ""
+
 }

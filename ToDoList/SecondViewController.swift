@@ -27,22 +27,31 @@ class SecondViewController: UIViewController {
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
-        let name = theTextField.text
+        /* W1 & 2
+         let name = theTextField.text
         
         if name != nil {
             dataTemp = DataModel(date: getDate, name: name!)
             self.delegate?.firstViewController(controller: self, didUpdateTodoes: dataTemp)
            //tableData.append(dataTemp)
-        }
-    }
-    
-    var getDate: String {
+         }
+         W3
+         */
+        
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyy - HH:mm"
         let result = formatter.string(from: date)
+        let tempTodo = DataModel()
+        tempTodo.name = (theTextField.text!)
+        tempTodo.date = result
         
-        return result
+        self.delegate?.firstViewController(controller: self, didUpdateTodoes: tempTodo)
+        
+        theTextField.text = ""
+        self.view.endEditing(true)
+        tabBarController?.selectedIndex = 0
+        
     }
     
 }
